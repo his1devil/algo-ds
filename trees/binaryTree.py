@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # 构造一个root node和两个空子树
-# Binary Tree
+# Binary Tree with no OOP
 def BinaryTree(r):
     return [r, [], []]
 
