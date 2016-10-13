@@ -52,4 +52,36 @@ def partition(L, first, last):
     return rightmark
 
 
+def quick_sort(alist):
+    """
+    quick sort通常比同为O(nlogn)的其他算法更快
+    分治思想 和归并不同，并没有使用额外的存储空间
+    """
+    return quicksort(alist, 0, len(alist)-1)
+
+def quicksort(alist, left, right):
+    """
+    bubble sort, selection sort, insertion sort O(n²)复杂度
+    shell sort 不稳定 O(n) ~ O(n²)
+    merge sort O(nlogn)，但是需要额外的存储空间
+    quick sort O(nlogn)，不需要额外存储空间，但是如果pivot value选的不好，有可能O(n²):
+    """
+    if left >= right:
+        return alist
+    pivot = alist[left]
+    i = left
+    j = right
+    while i < j:
+        while alist[j] >= pivot and i < j:
+            j -= 1
+        while alist[i] <= pivot and i < j:
+            i += 1
+        alist[i], alist[j] = alist[j], alist[i]
+    alist[left], alist[i] = alist[i], alist[left]
+    quicksort(alist, left, i-1)
+    quicksort(alist, j+1, right)
+    return alist
+
+alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+print quick_sort(alist)
 
