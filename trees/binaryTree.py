@@ -1,47 +1,43 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# 构造一个root node和两个空子树
-# Binary Tree with no OOP
-def BinaryTree(r):
-    return [r, [], []]
 
-def insertLeft(root, newBranch):
-    t = root.pop(1)
-    if len(t) > 1:
-        root.insert(1, [newBranch, t, []])
-    else:
-        root.insert(1, [newBranch, [], []])
+class BinaryTree(object):
+    """
+    OOP
+    """
+    def __init__(self, rootObj):
+        self.key = rootObj
+        self.leftChild = None
+        self.rightChild = None
 
-    return root
+    def insertLeft(self, newnode):
+        if self.leftChild == None:
+            self.leftChild = BinaryTree(newnode)
+        else:
+            t = BinaryTree(newnode)
+            t.leftChild = self.leftChild
+            self.leftChild = t
 
-def insertRight(root, newBranch):
-    t = root.pop(2)
-    if len(t) > 1:
-        root.insert(2, [newBranch, [], t])
-    else:
-        root.insert(2, [newBranch, [], []])
+    def insertRight(self, newnode):
+        if self.rightChild == None:
+            self.rightChild = BinaryTree(newnode)
+        else:
+            t = BinaryTree(newnode)
+            t.rightChild = self.rightChild
+            self.rightChild = t
 
-    return root
+    """
+     访问器方法
+    """
+    def getRightChild(self):
+        return self.rightChild
 
-def getRootVal(root):
-    return root[0]
+    def getLeftChild(self):
+        return self.leftChild
 
-def setRootVal(root, newVal):
-    root[0] = newVal
+    def setRootVal(self, newobj):
+        self.key = newobj
 
-def getLeftChild(root):
-    return root[1]
-
-def getRightChild(root):
-    return root[2]
-
-r = BinaryTree(3)
-
-insertLeft(r, 4)
-insertLeft(r, 5)
-insertRight(r, 6)
-insertRight(r, 7)
-print r
-l = getLeftChild(r)
-print l
+    def getRootVal(self):
+        return self.key
