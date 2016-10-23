@@ -2,6 +2,31 @@
 # -*- coding: utf-8 -*-
 
 # OO 构造二叉树
+
+class BinaryTree(object):
+    def __init__(self, rootObj):
+        self.key = rootObj
+        self.leftChild = None
+        self.rightChild = None
+
+    def insertLeft(self, newNode):
+        if self.leftChild == None:
+            self.leftChild = BinaryTree(newNode)
+        else:
+            t = BinaryTree(newNode)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+
+    def insertRight(self, newNode):
+        if self.rightChild == None:
+            self.rightChild = BinaryTree(newNode)
+        else:
+            t = BinaryTree(newNode)
+            t.RightChild = BinaryTree(newNode)
+            self.rightChild = t
+            def getRightChild(self, newNode):
+                print rightChild(Noe)
+
 class BinaryTree(object):
     def __init__(self, rootObj):
         self.key = rootObj
