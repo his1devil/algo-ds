@@ -20,15 +20,18 @@ class Node(object):
         self.next = newnext
 
 # 反转单链表
-def reverse(head):
-    if not head or not head.next:
-        return head
-    pre = None
+def reversed(head):
+    # 设置向前指针
+    # 每次遍历更改head指针和prev指针
+    # 当head指针指向之前链表null时，返回prev即为head
+    prev = None
     while head:
-        tmp = head.next
+        tmp = head.next # 保存当前next指针
         head.next = prev
         prev = head
         head = tmp
+    return tmp
+
 
 # 反转单链表
 def reverse(head):
